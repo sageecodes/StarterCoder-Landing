@@ -32,14 +32,16 @@
     <!-- PAGE WRAPPER -->
     <div class="flex min-h-screen">
       <!-- SIDEBAR -->
+      <!-- SIDEBAR -->
       <aside
-        class="w-64 p-6 space-y-6 bg-white/50 dark:bg-gray-900/60 backdrop-blur-xl border-r border-gray-200 dark:border-gray-800 shadow-lg"
+        id="mobile-sidebar"
+        class="fixed top-0 left-0 h-full w-64 bg-white dark:bg-gray-900 shadow-lg transform -translate-x-full transition-transform duration-300 md:static md:translate-x-0 md:block md:w-64 p-6 border-r border-gray-200 dark:border-gray-800 z-50"
       >
         <h1 class="text-2xl font-bold">
           <span class="text-brand">&lt;/&gt;</span> StarterCoder
         </h1>
 
-        <nav class="space-y-2">
+        <nav class="space-y-2 mt-6">
           <a
             href="#"
             class="flex items-center gap-3 px-4 py-2 rounded-lg bg-brand/20 text-brand font-medium"
@@ -68,12 +70,47 @@
             <span>🚪</span> Logout
           </a>
         </nav>
+
+        <!-- CLOSE BUTTON -->
+        <button
+          id="close-sidebar"
+          class="md:hidden absolute top-4 right-4 text-gray-600 dark:text-gray-300 bg-gray-200 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+        >
+          ✕
+        </button>
       </aside>
+
+      <!-- MOBILE OVERLAY (must be outside the aside) -->
+      <div
+        id="overlay"
+        class="fixed inset-0 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300 z-40 md:hidden"
+      ></div>
 
       <!-- MAIN CONTENT -->
       <main class="flex-1 p-8 space-y-8">
         <!-- HEADER -->
         <header class="flex items-center justify-between">
+          <button
+            id="menu-btn"
+            class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+          >
+            <!-- Hamburger Icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+
           <h2 class="text-3xl font-bold">Welcome back, Student 👋</h2>
 
           <button
@@ -234,5 +271,27 @@
         </section>
       </main>
     </div>
+    <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const sidebar = document.getElementById("mobile-sidebar");
+      const overlay = document.getElementById("overlay");
+      const closeBtn = document.getElementById("close-sidebar");
+
+      function openSidebar() {
+        sidebar.classList.remove("-translate-x-full");
+        overlay.classList.remove("pointer-events-none");
+        overlay.classList.add("opacity-100");
+      }
+
+      function closeSidebar() {
+        sidebar.classList.add("-translate-x-full");
+        overlay.classList.add("pointer-events-none");
+        overlay.classList.remove("opacity-100");
+      }
+
+      menuBtn.addEventListener("click", openSidebar);
+      closeBtn.addEventListener("click", closeSidebar);
+      overlay.addEventListener("click", closeSidebar);
+    </script>
   </body>
 </html>
