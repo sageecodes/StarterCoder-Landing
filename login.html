@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>StarterCoder Login</title>
+    <title>StarterCoder – Login</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Optional: Custom Tailwind config for colors -->
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              primary: "#179898", // teal-700
-              secondary: "#116f6f", // teal-800
+              primary: "#179898",
+              secondary: "#116f6f",
             },
           },
         },
@@ -34,7 +34,7 @@
           <span class="text-primary">&lt;/&gt;</span> StarterCoder
         </h1>
         <p class="text-gray-300 text-sm mt-1">
-          Welcome back, let's continue learning.
+          Welcome back! Log into your account.
         </p>
       </div>
 
@@ -65,26 +65,19 @@
         </div>
 
         <button
+          type="submit"
           class="w-full py-3 bg-primary hover:bg-teal-700 transition rounded-lg text-white font-medium shadow-lg"
         >
           Login
         </button>
       </form>
 
-      <!-- Bottom Text -->
       <p class="text-gray-300 text-sm text-center mt-6">
         Don't have an account?
-        <a
-          href="./signUp.html"
-          class="text-primary hover:underline"
-          target="_blank"
-          >Sign up</a
-        >
+        <a href="./signup.html" class="text-primary hover:underline">
+          Sign up
+        </a>
       </p>
     </div>
-
-    <script>
-      function signup(params) {}
-    </script>
   </body>
 </html>
